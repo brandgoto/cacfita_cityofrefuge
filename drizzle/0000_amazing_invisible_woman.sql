@@ -1,0 +1,22 @@
+CREATE TABLE `leads` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`form_type` text NOT NULL,
+	`first_name` text NOT NULL,
+	`last_name` text NOT NULL,
+	`email` text NOT NULL,
+	`phone` text NOT NULL,
+	`description` text,
+	`message` text,
+	`interested_day` text,
+	`guests` integer,
+	`consent` integer DEFAULT false NOT NULL,
+	`source` text NOT NULL,
+	`campaign` text,
+	`utm_source` text,
+	`utm_medium` text,
+	`utm_campaign` text,
+	`utm_content` text,
+	`utm_term` text,
+	`landing_page` text NOT NULL,
+	`created_at` text NOT NULL
+);

@@ -1,19 +1,11 @@
-import { env } from "cloudflare:workers";
 import type { Enquiry } from "@/lib/enquiry";
 import { site } from "@/lib/site-data";
 
 const SECRET_NAMES = ["RESEND_API_KEY", "RESEND_FROM_EMAIL", "CHURCH_NOTIFICATION_EMAIL"] as const;
 
 function readSecret(name: (typeof SECRET_NAMES)[number]) {
-  try {
-    const fromProcess = process.env[name];
-    if (typeof fromProcess === "string" && fromProcess.trim()) return fromProcess.trim();
-    const fromBinding = env[name];
-    if (typeof fromBinding === "string" && fromBinding.trim()) return fromBinding.trim();
-  } catch {
-    return "";
-  }
-  return "";
+  const value = process.env[name];
+  return typeof value === "string" ? value.trim() : "";
 }
 
 function escapeHtml(value: string) {

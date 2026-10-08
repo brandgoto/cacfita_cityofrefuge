@@ -4,6 +4,22 @@ import { readExecutionProfile } from "./execution-profile.mjs";
 
 const [command, ...args] = process.argv.slice(2);
 if (!["dev", "build"].includes(command)) throw new Error("Expected dev or build.");
+
+const useNext =
+  process.env.VERCEL === "1" ||
+  process.env.DEPLOY_TARGET === "next" ||
+  process.env.USE_NEXT === "1";
+
+if (useNext) {
+  const nextBin = fileURLToPath(new URL("../node_modules/next/dist/bin/next", import.meta.url));
+  const result = spawnSync(process.execPath, [nextBin, command, ...args], {
+    stdio: "inherit",
+    env: process.env,
+  });
+  if (result.error) throw result.error;
+  process.exit(result.status ?? 1);
+}
+
 const managedLinux = readExecutionProfile() === "managed-linux";
 
 if (managedLinux && command === "build") {

@@ -47,7 +47,35 @@ export function PageHero({ eyebrow, title, copy, image, children }: { eyebrow: s
 export function ExpectationGrid() { return <div className="feature-grid">{expectations.map((item, index) => <article key={item.title}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.copy}</p></article>)}</div>; }
 
 export function SocialLinks({ dark = false }: { dark?: boolean }) {
-  return <div className={`social-links ${dark ? "social-links-dark" : ""}`}>{socialLinks.map((item) => <a key={item.label} href={item.href} onClick={(event) => event.preventDefault()} data-placeholder={item.placeholder} aria-label={`${item.label} link coming soon`}><span>{item.label}</span><small>Link coming soon</small><ArrowRight /></a>)}</div>;
+  return (
+    <div className={`social-links ${dark ? "social-links-dark" : ""}`}>
+      {socialLinks.map((item) => {
+        const isLive = item.href !== "#";
+        if (isLive) {
+          return (
+            <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`${item.label} (opens in a new tab)`}>
+              <span>{item.label}</span>
+              <small>Follow us</small>
+              <ArrowRight />
+            </a>
+          );
+        }
+        return (
+          <a
+            key={item.label}
+            href={item.href}
+            onClick={(event) => event.preventDefault()}
+            data-placeholder={"placeholder" in item ? item.placeholder : undefined}
+            aria-label={`${item.label} link coming soon`}
+          >
+            <span>{item.label}</span>
+            <small>Link coming soon</small>
+            <ArrowRight />
+          </a>
+        );
+      })}
+    </div>
+  );
 }
 
 export function EventSummary({ compact = false }: { compact?: boolean }) {

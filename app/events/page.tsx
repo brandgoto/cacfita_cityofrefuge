@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { CalendarDays, Clock3, Coffee, MapPin } from "lucide-react";
+import { LeadForm } from "@/components/lead-form";
 import { ButtonLink, EventSummary, PageHero, SiteFrame } from "@/components/site-shell";
 import { site } from "@/lib/site-data";
 
@@ -14,8 +16,9 @@ export default function EventsPage() { return <SiteFrame><main>
       <article><MapPin /><small>Venue</small><strong>{site.venue}</strong><p>{site.addressLines.join(", ")}</p></article>
       <article><Coffee /><small>Hospitality</small><strong>Stay and connect</strong><p>Light refreshments served both days</p></article>
     </div>
-    <div className="section-actions"><ButtonLink href="/visit">Plan your visit</ButtonLink><ButtonLink href={site.directionsUrl} tone="outline" external>Get directions</ButtonLink></div>
+    <div className="section-actions"><ButtonLink href="#rsvp">RSVP for launch weekend</ButtonLink><ButtonLink href="/visit" tone="outline">Plan your visit</ButtonLink><ButtonLink href={site.directionsUrl} tone="outline" external>Get directions</ButtonLink></div>
   </div></section>
   <section className="section schedule-section"><div className="container schedule-grid"><div><p className="event-label">Saturday · October 31</p><h2>Opening gathering</h2><p>We begin at <strong>12:00 Noon</strong> with worship, prayer, the Word and a warm welcome into our new church community.</p></div><div><p className="event-label">Sunday · November 1</p><h2>Sunday worship</h2><p>Join us at <strong>11:00 AM</strong> as we continue launch weekend together and look ahead to all God will build in London.</p></div></div></section>
+  <section className="section connect-page" id="rsvp"><div className="container form-layout"><div className="form-intro"><p className="event-label">Launch weekend</p><h2>Save your <em>place.</em></h2><p>Let us know which day you plan to join. No ticket is required — this simply helps us welcome you well.</p></div><div className="form-panel"><h2>Event RSVP</h2><p>Required fields are marked with an asterisk.</p><Suspense fallback={<p>Loading form…</p>}><LeadForm mode="rsvp" /></Suspense></div></div></section>
   <section className="section future-events"><div className="container"><div className="future-card"><span>What’s next</span><h2>More gatherings are coming.</h2><p>New worship services, prayer gatherings and community moments will be added here as dates are confirmed.</p><ButtonLink href="/connect" tone="navy">Get event updates</ButtonLink></div><div className="past-card"><span>Past events</span><p>Our event archive will grow here as the City of Refuge story unfolds.</p></div></div></section>
 </main></SiteFrame>; }

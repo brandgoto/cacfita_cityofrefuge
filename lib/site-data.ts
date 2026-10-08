@@ -18,7 +18,7 @@ export const site = {
 } as const;
 
 export const socialLinks = [
-  { label: "Instagram", href: "#", placeholder: "INSTAGRAM_URL" },
+  { label: "Instagram", href: "https://www.instagram.com/cacfitacityofrefuge" },
   { label: "Facebook", href: "#", placeholder: "FACEBOOK_URL" },
   { label: "TikTok", href: "#", placeholder: "TIKTOK_URL" },
   { label: "YouTube", href: "#", placeholder: "YOUTUBE_URL" },

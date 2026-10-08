@@ -5,7 +5,17 @@ import { LeadForm } from "@/components/lead-form";
 import { ButtonLink, PageHero, SiteFrame } from "@/components/site-shell";
 import { site } from "@/lib/site-data";
 
-export const metadata: Metadata = { title: "Plan Your Visit", description: "Plan your first visit to CAC FITA London City of Refuge at Courtyard by Marriott London.", alternates: { canonical: "/visit" } };
+export const metadata: Metadata = {
+  title: "Plan Your Visit",
+  description: "Plan your first visit to CAC FITA London City of Refuge. Find launch weekend times, venue directions to Courtyard by Marriott London, and what to expect.",
+  alternates: { canonical: "/visit" },
+  openGraph: {
+    title: "Plan Your Visit | City of Refuge London",
+    description: "Everything you need for your first visit — times, directions and a warm welcome at launch weekend.",
+    url: "/visit",
+    images: [{ url: "/visit.png", alt: "Plan your visit to City of Refuge" }],
+  },
+};
 
 const questions = [
   { icon: Shirt, title: "What should I wear?", copy: "Come as you are. You will see everything from casual to dressed up—there is no dress code." },

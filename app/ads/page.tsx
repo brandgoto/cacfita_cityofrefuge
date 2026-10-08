@@ -7,7 +7,17 @@ import { LeadForm } from "@/components/lead-form";
 import { EventSummary, Eyebrow } from "@/components/site-shell";
 import { site } from "@/lib/site-data";
 
-export const metadata: Metadata = { title: "You’re Invited to Launch Weekend", description: "Join CAC FITA London City of Refuge for launch weekend, October 31 and November 1, 2026.", alternates: { canonical: "/ads" } };
+export const metadata: Metadata = {
+  title: "You’re Invited to Launch Weekend",
+  description: "You’re invited to CAC FITA London City of Refuge launch weekend — October 31 at 12:00 Noon and November 1 at 11:00 AM at Courtyard by Marriott London.",
+  alternates: { canonical: "/ads" },
+  openGraph: {
+    title: "You’re Invited | City of Refuge Launch Weekend",
+    description: "A place to belong. A faith to grow. Join us October 31 & November 1, 2026 in London, Ontario.",
+    url: "/ads",
+    images: [{ url: "/ads-hero.png", alt: "Friends warmly welcoming one another at church" }],
+  },
+};
 
 export default function AdsPage() { return <main className="ads-page">
   <header className="ads-header"><Link href="/" aria-label="City of Refuge home"><Image src="/cac-logo.png" alt="Christ Apostolic Church" width={357} height={298} /><span><strong>CAC FITA London</strong><small>City of Refuge</small></span></Link><a href="#interest">Save my place <ArrowRight /></a></header>

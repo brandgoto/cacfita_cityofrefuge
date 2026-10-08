@@ -4,7 +4,17 @@ import { Mail, MessageCircle, Users } from "lucide-react";
 import { LeadForm } from "@/components/lead-form";
 import { PageHero, SiteFrame, SocialLinks } from "@/components/site-shell";
 
-export const metadata: Metadata = { title: "Connect", description: "Connect with CAC FITA London City of Refuge, ask a question or receive updates about our growing church community.", alternates: { canonical: "/connect" } };
+export const metadata: Metadata = {
+  title: "Connect With Us",
+  description: "Connect with CAC FITA London City of Refuge. Ask a question, share interest in visiting, or receive updates about our church community in London, Ontario.",
+  alternates: { canonical: "/connect" },
+  openGraph: {
+    title: "Connect | CAC FITA London City of Refuge",
+    description: "Reach out to City of Refuge — ask a question, find community, or stay updated.",
+    url: "/connect",
+    images: [{ url: "/connect.png", alt: "Connect with City of Refuge" }],
+  },
+};
 
 export default function ConnectPage() { return <SiteFrame><main>
   <PageHero eyebrow="Take your next step" title={<>Let’s grow<br /><em>together.</em></>} copy="Whether you are looking for a church home, have a question or simply want to stay in the loop—we would love to hear from you." image="/connect.png" />

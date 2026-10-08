@@ -4,7 +4,17 @@ import { BookOpen, Church, HeartHandshake, Sparkles } from "lucide-react";
 import { ButtonLink, Eyebrow, PageHero, SiteFrame } from "@/components/site-shell";
 import { site } from "@/lib/site-data";
 
-export const metadata: Metadata = { title: "About", description: "Learn about the heart, identity and vision of CAC FITA London City of Refuge.", alternates: { canonical: "/about" } };
+export const metadata: Metadata = {
+  title: "About Our Church",
+  description: "Learn the story, beliefs and vision of CAC FITA London City of Refuge — a Christ-centred church family in London, Ontario rooted in faith, prayer and community.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About CAC FITA London City of Refuge",
+    description: "Discover the heart and vision of City of Refuge, a Christ-centred church community in London, Ontario.",
+    url: "/about",
+    images: [{ url: "/about-community.png", alt: "Friends sharing community at City of Refuge" }],
+  },
+};
 
 export default function AboutPage() { return <SiteFrame><main>
   <PageHero eyebrow="Our story" title={<>A city needs<br /><em>a refuge.</em></>} copy="We are a growing Christ-centred church community in London, Ontario, creating space for people to meet Jesus and become family." image="/about-community.png"><ButtonLink href="/visit">Come and see</ButtonLink></PageHero>

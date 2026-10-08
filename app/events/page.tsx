@@ -5,7 +5,17 @@ import { LeadForm } from "@/components/lead-form";
 import { ButtonLink, EventSummary, PageHero, SiteFrame } from "@/components/site-shell";
 import { site } from "@/lib/site-data";
 
-export const metadata: Metadata = { title: "Events", description: "Discover upcoming worship gatherings and community events at CAC FITA London City of Refuge.", alternates: { canonical: "/events" } };
+export const metadata: Metadata = {
+  title: "Events & Launch Weekend",
+  description: "Join CAC FITA London City of Refuge for launch weekend on October 31 and November 1, 2026 at Courtyard by Marriott London. Worship, prayer, the Word and community.",
+  alternates: { canonical: "/events" },
+  openGraph: {
+    title: "Launch Weekend | CAC FITA London City of Refuge",
+    description: "Two welcoming gatherings — October 31 at 12:00 Noon and November 1 at 11:00 AM — at Courtyard by Marriott London.",
+    url: "/events",
+    images: [{ url: "/events-hero.png", alt: "Launch weekend at City of Refuge" }],
+  },
+};
 
 export default function EventsPage() { return <SiteFrame><main>
   <PageHero eyebrow="Gather with us" title={<>Faith grows<br /><em>in community.</em></>} copy="Discover what’s happening at City of Refuge and make plans to join us." image="/events-hero.png"><ButtonLink href="#launch">Launch weekend</ButtonLink><ButtonLink href="/visit" tone="white">Plan your visit</ButtonLink></PageHero>

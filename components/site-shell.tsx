@@ -32,7 +32,36 @@ export function Footer() {
   </div><div className="container footer-bottom"><span>© 2026 CAC FITA London City of Refuge</span><span>{site.movement}</span></div></footer>;
 }
 
-export function SiteFrame({ children }: { children: React.ReactNode }) { return <><Navbar />{children}<Footer /><Link className="mobile-sticky" href="/visit"><CalendarDays />Plan your visit<ArrowRight /></Link></>; }
+export function SiteFrame({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const onVisit = pathname === "/visit";
+
+  function handleStickyClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (!onVisit) return;
+    const target = document.getElementById("coming");
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  return (
+    <>
+      <Navbar />
+      {children}
+      <Footer />
+      <Link
+        className="mobile-sticky"
+        href={onVisit ? "/visit#coming" : "/visit"}
+        onClick={handleStickyClick}
+        aria-label={onVisit ? "Tell us you’re coming" : "Plan your visit"}
+      >
+        <CalendarDays aria-hidden="true" />
+        <span>{onVisit ? "Tell us you’re coming" : "Plan your visit"}</span>
+        <ArrowRight aria-hidden="true" />
+      </Link>
+    </>
+  );
+}
 
 export function Eyebrow({ children, light = false }: { children: React.ReactNode; light?: boolean }) { return <p className={`eyebrow ${light ? "eyebrow-light" : ""}`}><span />{children}</p>; }
 
